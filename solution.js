@@ -1,20 +1,19 @@
 function range(start, end, step) {
   if (!step) {step = 1};
-  if ((end-start)*step > 0) {
-    var arr = [start];
-    var i = start + step;
-    while (start < end ? i <= end : i >= end) {
-      arr.push(i);
-      i = i + step;
-    }
-    return arr;
-  } else {
-    return [];
+
+  if ((end-start)*step < 0) { return []; }
+
+  var arr = [start];
+  var i = start + step;
+  while (start < end ? i <= end : i >= end) {
+    arr.push(i);
+    i = i + step;
   }
+  return arr;
 }
 
 function sum(numbers) {
-  var arr = numbers;
+  var arr = numbers.slice();
   var s = 0;
   while (arr > []) {
     s = s + arr.pop();
@@ -23,14 +22,20 @@ function sum(numbers) {
 }
 
 function reverseArray(arr) {
-  // Write a function which takes an array as argument
-  // and produces a new array that has the same elements in the inverse order.
+  var a = [];
+  var i = arr.length - 1;
+  while (0 <= i) {
+    a.push(arr[i--]);
+  }
+  return a;
 }
 
 function reverseArrayInPlace(arr) {
-  // Write a function that does what the reverse method does:
-  // it modifies the array given as argument in order to reverse
-  // its elements. It should not use the standard reverse method.
+  var rev = reverseArray(arr);
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = rev[i];
+  }
+  return rev;
 }
 
 function arrayToList(arr) {
