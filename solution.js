@@ -1,19 +1,25 @@
 function range(start, end, step) {
-  var arr = [start]
-  if (step) {step}
-  else {step = 1}
-  var i = start + step;
-  while (start < end ? i <= end : i >= end) {
-    arr.push(i);
-    i = i + step;
+  if (!step) {step = 1};
+  if ((end-start)*step > 0) {
+    var arr = [start];
+    var i = start + step;
+    while (start < end ? i <= end : i >= end) {
+      arr.push(i);
+      i = i + step;
+    }
+    return arr;
+  } else {
+    return [];
   }
-  return arr;
 }
 
-
 function sum(numbers) {
-  // Write a sum function that takes an array of numbers
-  // and returns the sum of these numbers.
+  var arr = numbers;
+  var s = 0;
+  while (arr > []) {
+    s = s + arr.pop();
+  }
+  return s;
 }
 
 function reverseArray(arr) {
