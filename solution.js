@@ -1,19 +1,15 @@
 function range(start, end, step) {
-  var arr = [start, end]
+  var arr = [start]
   if (step) {step}
   else {step = 1}
-  i = start + step;
-  while (i < end) {
+  var i = start + step;
+  while (start < end ? i <= end : i >= end) {
     arr.push(i);
     i = i + step;
   }
-  if (Math.abs(arr[arr.length - 1]) - Math.abs(arr[arr.length - 2]) == step) {
-    arr.pop();
-  }
-  return arr.sort(function(a, b){return a-b});
+  return arr;
 }
 
-array1[array1.length - 1];
 
 function sum(numbers) {
   // Write a sum function that takes an array of numbers

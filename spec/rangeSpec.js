@@ -1,4 +1,4 @@
-var range = require('../solution').range;
+  var range = require('../solution').range;
 
 describe("range", function() {
   it("returns array for range of numbers from 1 to 5", function() {
