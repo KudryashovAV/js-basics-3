@@ -39,27 +39,12 @@ function reverseArrayInPlace(arr) {
 }
 
 function arrayToList(arr) {
-  // Objects, as generic blobs of values, can be used to build all
-  // sorts of data structures. A common data structure is the list
-  // (not to be confused with the array). A list is a nested set of
-  // objects, with the first object holding a reference to the second,
-  // the second to the third, and so on.
-  // For example:
-  //
-  // var list = {
-  //   value: 1,
-  //   rest: {
-  //     value: 2,
-  //     rest: {
-  //       value: 3,
-  //       rest: null
-  //     }
-  //   }
-  // };
-  //
-  // Write a function arrayToList that builds up a data structure like
-  // the previous one when given [1, 2, 3] as argument. It should use
-  // helper function prepend.
+  var list = null;
+  var i = arr.length - 1;
+  while (i >= 0) {
+    list = prepend(arr[i--], list);
+  }
+  return list;
 }
 
 function listToArray(list) {
@@ -67,9 +52,11 @@ function listToArray(list) {
 }
 
 function prepend(item, list) {
+  var new_list = {value: item, rest: list};
+  return new_list;
+}
   // Write a function which takes an element and a list and creates a new list
   // that adds the element to the front of the input list.
-}
 
 function nth(n, list) {
   // Write which takes a list and a number and returns the element at the
