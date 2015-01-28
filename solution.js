@@ -48,30 +48,48 @@ function arrayToList(arr) {
 }
 
 function listToArray(list) {
-  // Write a function that produces an array from a list
+  var arr = [];
+  while (list !== null) {
+    arr.push(list.value);
+    list = list.rest;
+  }
+  return arr;
 }
 
 function prepend(item, list) {
-  var new_list = {value: item, rest: list};
-  return new_list;
+  return {value: item, rest: list};
 }
-  // Write a function which takes an element and a list and creates a new list
-  // that adds the element to the front of the input list.
 
 function nth(n, list) {
-  // Write which takes a list and a number and returns the element at the
-  // given position in the list, or undefined when there is no such element.
-  // It should be recursive.
+  if (n == 0) {
+    return list.value;
+  } else if (list.rest == null) {
+    return undefined;
+  } else {
+    return nth(n - 1, list.rest);
+  }
 }
 
 function deepEqual(a, b) {
-  // The == operator compares objects by identity. But sometimes,
-  // you would prefer to compare the values of their actual properties.
-  //
-  // Write a function, deepEqual, that takes two values and returns true
-  // only if they are the same value or are objects with the same
-  // properties whose values are also equal when compared with
-  // a recursive call to deepEqual.
+  if (a != null && b != null && typeof(a) == 'object' && typeof(b) == 'object') {
+    var new_a = Object.getOwnPropertyNames(a);
+    var new_b = Object.getOwnPropertyNames(b);
+
+    if (new_a.length !== new_b.length) {
+      return false;
+    }
+
+    for (i = 0; i < new_a.length; i++) {
+      if (!b.hasOwnProperty(new_a[i])) {
+        return false
+      } else if (!deepEqual(a[new_a[i]], b[new_a[i]])) {
+        return false;
+      }
+    }
+    return true;
+  } else {
+    return a === b;
+  }
 }
 
 module.exports = {
